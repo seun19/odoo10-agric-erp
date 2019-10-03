@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+  <data>
+
+    <!-- Farm Produce form view -->
+        <record model="ir.ui.view" id="farm_produce_form_view">
+            <field name="name">farm.produce.form</field>
+            <field name="model">agrohaven.production.farmproduce</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Farm Produce Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="category_id"/>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+                                <field name="description"/>
+                            </page>
+                            <page string="Productions">
+                                 <field name="production_estimate_ids"/>
+                            </page>
+                            <page string="About">
+                                This is the about page
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    <!-- Farm Produce tree view -->
+        <record model="ir.ui.view" id="farm_produce_tree_view">
+            <field name="name">farm.produce.tree</field>
+            <field name="model">agrohaven.production.farmproduce</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Farm Produce List">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+    <!-- Farm Produce search view -->
+        <record model="ir.ui.view" id="farm_produce_search_view">
+            <field name="name">farm.produce.search</field>
+            <field name="model">agrohaven.production.farmproduce</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="description"/>
+                </search>
+            </field>
+        </record>
+
+    <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
+        <record model="ir.actions.act_window" id="farm_produce_list_action">
+            <field name="name">Farm Produce</field>
+            <field name="res_model">agrohaven.production.farmproduce</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first Farm Produce
+                </p>
+            </field>
+        </record>
+
+    <!-- top level menu: no parent -->
+        <menuitem id="main_agrohaven_productions_menu" name="Productions"/>
+        <!-- A first level in the left side menu is needed
+             before using action= attribute -->
+        <menuitem id="productions_agrohaven_productions_menu" name="Productions"
+                  parent="main_agrohaven_productions_menu"/>
+        <!-- the following menuitem should appear *after*
+             its parent agrohaven_menu and *after* its
+             action course_list_action -->
+        <menuitem id="farm_produce_menu" name="Farm Produce" parent="productions_agrohaven_productions_menu"
+                  action="farm_produce_list_action" sequence="15"/>
+        <!-- Full id location:
+             action="agrohaven_production.farm_produce_list_action"
+             It is not required when it is the same module -->
+
+
+      <!-- Farm Produce Category form view -->
+        <record model="ir.ui.view" id="farm_produce_category_form_view">
+            <field name="name">farm.produce.category.form</field>
+            <field name="model">agrohaven.production.farmproducecategory</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Farm Produce Category Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+
+                        </group>
+                        <notebook>
+
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+      <!-- Farm Produce Category tree view -->
+        <record model="ir.ui.view" id="farm_produce_category_tree_view">
+            <field name="name">farm.produce.category.tree</field>
+            <field name="model">agrohaven.production.farmproducecategory</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Farm Produce Category List">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Farm Produce Category search view -->
+        <record model="ir.ui.view" id="farm_produce_category_search_view">
+            <field name="name">farm.produce.category.search</field>
+            <field name="model">agrohaven.production.farmproducecategory</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="description"/>
+                </search>
+            </field>
+        </record>
+
+      <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
+      <record model="ir.actions.act_window" id="farm_produce_category_list_action">
+            <field name="name">Farm Produce Category</field>
+            <field name="res_model">agrohaven.production.farmproducecategory</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first Farm Produce Category
+                </p>
+            </field>
+        </record>
+
+      <!-- second level menu: -->
+      <menuitem id="productions_agrohaven_configuration_menu" name="Configuration"
+                  parent="main_agrohaven_productions_menu"/>
+      <menuitem id="productions_agrohaven_configuration_farm_product_menu" name="Farm Produce"
+                  parent="productions_agrohaven_configuration_menu"/>
+      <!--Farm Produce Category menu-->
+      <menuitem id="farm_produce_category_menu" name="Farm Produce Category" parent="productions_agrohaven_configuration_farm_product_menu"
+                  action="farm_produce_category_list_action" sequence="15"/>
+
+
+
+  </data>
+</odoo>

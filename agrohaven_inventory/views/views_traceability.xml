@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+  <data>
+
+    <!-- Traceability form view -->
+        <record model="ir.ui.view" id="inventory_traceability_form_view">
+            <field name="name">traceability.form</field>
+            <field name="model">agrohaven.inventory.traceability</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Traceability Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+
+                            </page>
+                            <page string="About">
+                                This is the about page
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    <!-- Traceability tree view -->
+        <record model="ir.ui.view" id="inventory_traceability_tree_view">
+            <field name="name">traceability.tree</field>
+            <field name="model">agrohaven.inventory.traceability</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Traceability List">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+    <!-- Traceabilty search view -->
+        <record model="ir.ui.view" id="inventory_traceability_search_view">
+            <field name="name">traceability.search</field>
+            <field name="model">agrohaven.inventory.traceability</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+    <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
+        <record model="ir.actions.act_window" id="traceability_list_action">
+            <field name="name">Traceability</field>
+            <field name="res_model">agrohaven.inventory.traceability</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Traceability Section
+                </p>
+            </field>
+        </record>
+
+
+
+    <!-- top level and second level menu already exist in views_land_biography.xml-->
+
+        <menuitem id="traceability_menu" name="Traceability" parent="inventory_agrohaven_inventory_menu"
+                  action="traceability_list_action" sequence="19"/>
+        <!-- Full id location:
+             action="agrohaven_inventory.traceability_list_action"
+             It is not required when it is the same module -->
+
+
+  </data>
+</odoo>

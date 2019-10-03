@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+  <data>
+
+    <!-- Asset Management form view -->
+        <record model="ir.ui.view" id="inventory_asset_management_form_view">
+            <field name="name">asset.management.form</field>
+            <field name="model">agrohaven.inventory.assetmanagement</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Asset Management Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+
+                            </page>
+                            <page string="About">
+                                This is the about page
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    <!-- Asset Management tree view -->
+        <record model="ir.ui.view" id="inventory_asset_management_tree_view">
+            <field name="name">asset.management.tree</field>
+            <field name="model">agrohaven.inventory.assetmanagement</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Asset Management List">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+    <!-- Asset Management search view -->
+        <record model="ir.ui.view" id="inventory_asset_management_search_view">
+            <field name="name">asset.management.search</field>
+            <field name="model">agrohaven.inventory.assetmanagement</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+    <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
+        <record model="ir.actions.act_window" id="asset_management_list_action">
+            <field name="name">Asset Mangement</field>
+            <field name="res_model">agrohaven.inventory.assetmanagement</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Asset Mangement
+                </p>
+            </field>
+        </record>
+
+
+
+    <!-- top level and second level menu already exist in views_land_biography.xml-->
+
+        <menuitem id="asset_mangement_menu" name="Asset Management" parent="inventory_agrohaven_inventory_menu"
+                  action="asset_management_list_action" sequence="20"/>
+        <!-- Full id location:
+             action="agrohaven_inventory.asset_management_list_action"
+             It is not required when it is the same module -->
+
+
+  </data>
+</odoo>

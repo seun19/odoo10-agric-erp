@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+
+        <!-- Farm Activity form view -->
+        <record model="ir.ui.view" id="farm_activity_form_view">
+            <field name="name">unit.measure.form</field>
+            <field name="model">agrohaven.production.farmactivity</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Farm Activity Form">
+                    <sheet>
+                        <group>
+                            <group string="">
+                                <field name="name"/>
+                                <field name="status"/>
+                            </group>
+                            <group>
+                                <field name="assigned_employee_id"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="estimated_quantity"/>
+                                <field name="actual_quantity"/>
+                            </group>
+                            <group>
+                                <field name="estimated_cost"/>
+                                <field name="actual_cost"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="production_id"/>
+                                <field name="unit_of_measure_id"/>
+                            </group>
+                            <group>
+                                <field name="description"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Farm Activity tree view -->
+        <record model="ir.ui.view" id="farm_activity_tree_view">
+            <field name="name">farm.activity.tree</field>
+            <field name="model">agrohaven.production.farmactivity</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Farm Activity List">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Farm Activity search view -->
+        <record model="ir.ui.view" id="farm_activity_search_view">
+            <field name="name">farm.activity.search</field>
+            <field name="model">agrohaven.production.farmactivity</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+
+                </search>
+            </field>
+        </record>
+
+        <!-- Farm Activity calendar view -->
+        <record model="ir.ui.view" id="farm_activity_calendar_view">
+            <field name="name">farm.activity.calendar</field>
+            <field name="model">agrohaven.production.farmactivity</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <calendar string="Farm Activity Calendar" date_start="start_date" mode="month"
+                            display="Activity :[name] Assigned To :[assigned_employee_id] Status : [status]">
+                    <field name="name"/>
+                    <field name="assigned_employee_id"/>
+                    <field name="status"/>
+                </calendar>
+            </field>
+        </record>
+
+
+        <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
+      <record model="ir.actions.act_window" id="farm_activity_list_action">
+            <field name="name">Farm Activity</field>
+            <field name="res_model">agrohaven.production.farmactivity</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">calendar,tree,form</field>
+            <!--<field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first Farm Activity
+                </p>
+            </field>-->
+        </record>
+
+        <!-- second level menu: -->
+      <menuitem id="productions_agrohaven_dashboard_menu" name="Dashboard"
+                  parent="main_agrohaven_productions_menu"/>
+        <!--Farm Activity Category menu-->
+      <menuitem id="farm_activity_menu" name="Farm Activities" parent="productions_agrohaven_dashboard_menu"
+                  action="farm_activity_list_action" sequence="15"/>
+
+    </data>
+</odoo>

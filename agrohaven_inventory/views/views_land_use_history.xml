@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+  <data>
+
+    <!-- Land use history form view -->
+        <record model="ir.ui.view" id="inventory_land_history_form_view">
+            <field name="name">land.history.form</field>
+            <field name="model">agrohaven.inventory.landhistory</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Land Use History Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+
+                            </page>
+                            <page string="About">
+                                This is the about page
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    <!-- Land Use History tree view -->
+        <record model="ir.ui.view" id="inventory_land_history_tree_view">
+            <field name="name">land.history.tree</field>
+            <field name="model">agrohaven.inventory.landhistory</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Land Use History List">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+    <!-- Land use history search view -->
+        <record model="ir.ui.view" id="inventory_land_history_search_view">
+            <field name="name">stock.biography.search</field>
+            <field name="model">agrohaven.inventory.landhistory</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+    <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
+        <record model="ir.actions.act_window" id="land_history_list_action">
+            <field name="name">Land History</field>
+            <field name="res_model">agrohaven.inventory.landhistory</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create Land History
+                </p>
+            </field>
+        </record>
+
+
+
+    <!-- top level and second level menu already exist in views_land_biography.xml-->
+
+        <menuitem id="land_history_menu" name="Land Use History" parent="inventory_agrohaven_inventory_menu"
+                  action="land_history_list_action" sequence="17"/>
+        <!-- Full id location:
+             action="agrohaven_inventory.land_history_list_action"
+             It is not required when it is the same module -->
+
+
+  </data>
+</odoo>

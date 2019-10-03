@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+
+        <!-- Farm Production Estimate form view -->
+        <record model="ir.ui.view" id="farm_production_estimate_form_view">
+            <field name="name">farm.production.estimate.form</field>
+            <field name="model">agrohaven.production.farmproduction</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Farm Production Estimate Form">
+                    <sheet>
+                        <group string="General" col="4">
+                            <field name="name"/>
+                            <field name="farmproduce_id"/>
+                            <field name="supervisor_id"/>
+                            <field name="location"/>
+                            <field name="status"/>
+                        </group>
+                        <group>
+                            <group string="Cost">
+                                <field name="estimated_production_cost"/>
+                                <field name="actual_production_cost"/>
+                            </group>
+                            <group string="Duration">
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                            </group>
+                        </group>
+
+
+                        <notebook>
+                            <page string="Farm Activities">
+                                <field name="activity_ids"/>
+                            </page>
+                            <page string="About">
+                                This is the about page
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- Farm Production Estimate tree view -->
+        <record model="ir.ui.view" id="farm_production_estimate_tree_view">
+            <field name="name">farm.production.estimate.tree</field>
+            <field name="model">agrohaven.production.farmproduction</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Farm Production Estimate List">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Farm Production Estimate search view -->
+        <record model="ir.ui.view" id="farm_production_estimate_search_view">
+            <field name="name">farm.production.estimate.search</field>
+            <field name="model">agrohaven.production.farmproduction</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
+        <record model="ir.actions.act_window" id="farm_production_estimate_list_action">
+            <field name="name">Farm Production Estimate</field>
+            <field name="res_model">agrohaven.production.farmproduction</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first Farm Production
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="farm_production_estimate_menu" name="Production Estimate" parent="productions_agrohaven_productions_menu"
+                  action="farm_production_estimate_list_action" sequence="16"/>
+        <!-- Full id location:
+             action="agrohaven_production.farm_production_estimate_list_action"
+             It is not required when it is the same module -->
+
+
+
+    </data>
+</odoo>

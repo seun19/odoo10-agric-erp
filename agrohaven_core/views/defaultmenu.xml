@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--Core Module-->
+    <data>
+
+        <!--This no longer used-->
+
+        <!-- top level menu: no parent -->
+        <menuitem id="main_agrohaven_menu" name="Agro Haven"/>
+
+
+        <!-- top level menu: no parent -->
+        <!--<menuitem id="main_agrohaven_production_menu" name="Production"/>-->
+
+        <!-- top level menu: no parent -->
+        <!--<menuitem id="main_agrohaven_inventory_menu" name="Inventory"/>-->
+
+        <!-- top level menu: no parent -->
+        <!--<menuitem id="main_agrohaven_finance_menu" name="Finance"/>-->
+
+        <!-- top level menu: no parent -->
+        <!--<menuitem id="main_agrohaven_administration_menu" name="Administration"/>-->
+
+
+
+
+
+
+    </data>
+</odoo>

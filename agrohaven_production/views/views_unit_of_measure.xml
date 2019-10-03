@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+
+        <!-- Unit of measure form view -->
+        <record model="ir.ui.view" id="unit_of_measure_form_view">
+            <field name="name">unit.measure.form</field>
+            <field name="model">agrohaven.production.unitofmeasure</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Unit of Measure Form">
+                    <sheet>
+                        <group string="General">
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Unit of measure tree view -->
+        <record model="ir.ui.view" id="unit_of_measure_tree_view">
+            <field name="name">unit.measure.tree</field>
+            <field name="model">agrohaven.production.unitofmeasure</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Unit of Measure List">
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Unit of measure search view -->
+        <record model="ir.ui.view" id="unit_of_measure_search_view">
+            <field name="name">unit.measure.search</field>
+            <field name="model">agrohaven.production.unitofmeasure</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
+        <record model="ir.actions.act_window" id="unit_of_measure_list_action">
+            <field name="name">Farm Production Disease</field>
+            <field name="res_model">agrohaven.production.unitofmeasure</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Measurements
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="unit_of_measure_menu" name="Unit of Measure" parent="productions_agrohaven_configuration_menu"
+                  action="unit_of_measure_list_action" sequence="15"/>
+        <!-- Full id location:
+             action="agrohaven_production.unit_of_measure_list_action"
+             It is not required when it is the same module -->
+
+
+
+    </data>
+</odoo>

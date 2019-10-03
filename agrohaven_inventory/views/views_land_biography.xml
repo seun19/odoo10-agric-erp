@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+  <data>
+
+    <!-- Land Biography form view -->
+        <record model="ir.ui.view" id="inventory_land_biography_form_view">
+            <field name="name">land.biography.form</field>
+            <field name="model">agrohaven.inventory.landbiography</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Land Biography Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+
+                            </page>
+                            <page string="About">
+                                This is the about page
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    <!-- Land Biography tree view -->
+        <record model="ir.ui.view" id="inventory_land_biography_tree_view">
+            <field name="name">land.biography.tree</field>
+            <field name="model">agrohaven.inventory.landbiography</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Land Biography List">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+    <!-- Land Biography search view -->
+        <record model="ir.ui.view" id="inventory_land_biography_search_view">
+            <field name="name">land.biography.search</field>
+            <field name="model">agrohaven.inventory.landbiography</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+    <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
+        <record model="ir.actions.act_window" id="land_biography_list_action">
+            <field name="name">Land Biography</field>
+            <field name="res_model">agrohaven.inventory.landbiography</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create Land Biography
+                </p>
+            </field>
+        </record>
+
+    <!-- top level menu: no parent -->
+        <menuitem id="main_agrohaven_inventory_menu" name="Inventory"/>
+        <!-- A first level in the left side menu is needed
+             before using action= attribute -->
+        <menuitem id="inventory_agrohaven_inventory_menu" name="Inventory"
+                  parent="main_agrohaven_inventory_menu"/>
+        <!-- the following menuitem should appear *after*
+             its parent agrohaven_menu and *after* its
+             action  -->
+        <menuitem id="land_biography_menu" name="Land Biography" parent="inventory_agrohaven_inventory_menu"
+                  action="land_biography_list_action" sequence="15"/>
+        <!-- Full id location:
+             action="agrohaven_inventory.land_biography_list_action"
+             It is not required when it is the same module -->
+
+
+
+
+
+  </data>
+</odoo>

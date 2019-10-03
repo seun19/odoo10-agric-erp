@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+
+        <!-- Farm Disease form view -->
+        <record model="ir.ui.view" id="farm_disease_form_view">
+            <field name="name">farm.disease.form</field>
+            <field name="model">agrohaven.production.disease</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Farm Disease Form">
+                    <sheet>
+                        <group string="General" col="4">
+                            <field name="name"/>
+                            <field name="risk_detected"/>
+                            <field name="indicators"/>
+                            <field name="date_logged"/>
+                            <field name="supervisor_id"/>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Farm Disease tree view -->
+        <record model="ir.ui.view" id="farm_disease_tree_view">
+            <field name="name">farm.disease.tree</field>
+            <field name="model">agrohaven.production.disease</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Farm Disease List">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Farm Disease search view -->
+        <record model="ir.ui.view" id="farm_disease_search_view">
+            <field name="name">farm.disease.search</field>
+            <field name="model">agrohaven.production.disease</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
+        <record model="ir.actions.act_window" id="farm_disease_list_action">
+            <field name="name">Farm Production Disease</field>
+            <field name="res_model">agrohaven.production.disease</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create Discovered Diseases
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="farm_disease_menu" name="Pest and Disease Detection" parent="productions_agrohaven_productions_menu"
+                  action="farm_disease_list_action" sequence="17"/>
+        <!-- Full id location:
+             action="agrohaven_production.farm_disease_list_action"
+             It is not required when it is the same module -->
+
+
+
+    </data>
+</odoo>

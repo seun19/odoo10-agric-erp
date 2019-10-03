@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+  <data>
+
+    <!-- Inventory tracker form view -->
+        <record model="ir.ui.view" id="inventory_inventory_tracker_form_view">
+            <field name="name">inventory.tracker.form</field>
+            <field name="model">agrohaven.inventory.inventorytracker</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Inventory Tracker Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+
+                            </page>
+                            <page string="About">
+                                This is the about page
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    <!-- Inventory tracker tree view -->
+        <record model="ir.ui.view" id="inventory_inventory_tracker_tree_view">
+            <field name="name">inventory.tracker.tree</field>
+            <field name="model">agrohaven.inventory.inventorytracker</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Inventory Tracker List">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+    <!-- Inventory Tracker search view -->
+        <record model="ir.ui.view" id="inventory_inventory_tracker_search_view">
+            <field name="name">inventory.tracker.search</field>
+            <field name="model">agrohaven.inventory.inventorytracker</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+    <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
+        <record model="ir.actions.act_window" id="inventory_tracker_list_action">
+            <field name="name">Inventory Tracker</field>
+            <field name="res_model">agrohaven.inventory.inventorytracker</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create Inventory Tracker
+                </p>
+            </field>
+        </record>
+
+
+
+    <!-- top level and second level menu already exist in views_land_biography.xml-->
+
+        <menuitem id="inventory_tracker_menu" name="Inventory Tracker" parent="inventory_agrohaven_inventory_menu"
+                  action="inventory_tracker_list_action" sequence="18"/>
+        <!-- Full id location:
+             action="agrohaven_inventory.inventory_tracker_list_action"
+             It is not required when it is the same module -->
+
+
+  </data>
+</odoo>
